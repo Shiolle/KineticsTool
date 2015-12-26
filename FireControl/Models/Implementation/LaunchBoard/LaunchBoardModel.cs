@@ -197,7 +197,7 @@ namespace FireControl.Models.Implementation.LaunchBoard
 
         private AvidWindow[] GetAvailableLaunchWindows()
         {
-            if (FiringSolution == null)
+            if (FiringSolution == null || FiringSolution.AimAdjustment == AimAdjustment.NoShot)
             {
                 return new AvidWindow[0];
             }
