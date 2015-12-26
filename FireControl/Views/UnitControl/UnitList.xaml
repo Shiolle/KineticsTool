@@ -67,7 +67,7 @@
                             <Button Margin="0,0,66,2" VerticalAlignment="Bottom" Height="28" HorizontalAlignment="Right" Width="28"
                                     CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}">
                                 <Button.Command>
-                                    <cmd:ShowWindowCommand Target="{Binding ShowShellstars}" AsDialog="False" ViewType="FireControl.Windiws.AssignedShellstars"
+                                    <cmd:ShowWindowCommand Target="{Binding ShowShellstars}" AsDialog="False" ViewType="FireControl.Windows.AssignedShellstars"
                                                            IsReady="{Binding CanViewShellstars}"/>
                                 </Button.Command>
                                 <Image Height="24" Width="24" HorizontalAlignment="Left" VerticalAlignment="Top" Source="{StaticResource Shellstar}"/>

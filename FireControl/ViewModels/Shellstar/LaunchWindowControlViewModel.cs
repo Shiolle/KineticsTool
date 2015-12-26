@@ -71,6 +71,11 @@ namespace FireControl.ViewModels.Shellstar
             get { return SelectedWindow != null; }
         }
 
+        public bool CanSelectLaunchWindow
+        {
+            get { return _availableWindows != null && _availableWindows.Length > 1; }
+        }
+
         public INavigationInterface SelectReferenceDirection
         {
             get { return _selectReferenceDirection; }
@@ -147,6 +152,7 @@ namespace FireControl.ViewModels.Shellstar
                 new LaunchWindowViewModel[0];
 
             OnPropertyChanged(Properties.AvailableWindows);
+            OnPropertyChanged(Properties.CanSelectLaunchWindow);
             SetDefaultWindow();
         }
 
@@ -154,6 +160,7 @@ namespace FireControl.ViewModels.Shellstar
         {
             public const string AvailableWindows = "AvailableWindows";
             public const string SelectedWindow = "SelectedDirection";
+            public const string CanSelectLaunchWindow = "CanSelectLaunchWindow";
             public const string ReferenceDirectionAvailable = "ReferenceDirectionAvailable";
         }
     }

@@ -10,22 +10,22 @@
         <BitmapImage x:Key="Left" UriSource="..\..\Resources\Icons\KT_Left.png" />
         <BitmapImage x:Key="Right" UriSource="..\..\Resources\Icons\KT_Right.png" />
         <BitmapImage x:Key="Delete" UriSource="../../Resources/Icons/KT_UnitDelete.png"/>
-        <!--<cmd:SimpleCommand x:Key="NavigateLeftCommand" Target="{Binding}" MethodName="NavigateLeft"/>-->
-        <!--<cmd:SimpleCommand x:Key="NavigateRightCommand" Target="{Binding}" MethodName="NavigateRight"/>-->
-        <!--<cmd:SimpleCommand x:Key="DeleteShellstarCommand" Target="{Binding}" MethodName="RemoveShellstar"/>-->
-        <!--<cmd:CloseWindowCommand x:Key="CloseCommand" Target="{Binding}" MethodName="RemoveShellstar"/>-->
+        <cmd:SimpleCommand x:Key="NavigateLeftCommand" Target="{Binding}" MethodName="NavigateLeft"/>
+        <cmd:SimpleCommand x:Key="NavigateRightCommand" Target="{Binding}" MethodName="NavigateRight"/>
+        <cmd:SimpleCommand x:Key="DeleteShellstarCommand" Target="{Binding}" MethodName="RemoveShellstar"/>
+        <cmd:CloseWindowCommand x:Key="CloseCommand" Target="{Binding}"/>
     </UserControl.Resources>
     <StackPanel Orientation="Vertical">
         <Border BorderThickness="1" BorderBrush="Black" Height="40">
             <Grid>
                 <Button Height="32" Width="32" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2, 0, 0, 0"
                         IsEnabled="{Binding CanNavigateLeft}"
-                        Command="{Binding NavigateLeftCommand}">
+                        Command="{StaticResource NavigateLeftCommand}">
                     <Image Source="{StaticResource Left}"/>
                 </Button>
                 <Button Height="32" Width="32" HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="0, 0, 2, 0"
                         IsEnabled="{Binding CanNavigateRight}"
-                        Command="{Binding NavigateRightCommand}">
+                        Command="{StaticResource NavigateRightCommand}">
                     <Image Source="{StaticResource Right}"/>
                 </Button>
                 <Label Content="{Binding CounterText}" Width="60" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="36, 0, 0, 0"/>
@@ -34,13 +34,13 @@
                          Text="{Binding Tag}"/>
                 <Button Height="32" Width="32" HorizontalAlignment="Right" VerticalAlignment="Center"  Margin="0, 0, 36, 0"
                         IsEnabled="{Binding IsShellstarSelected}"
-                        Command="{Binding RemoveShellstarCommand}">
+                        Command="{StaticResource DeleteShellstarCommand}">
                     <Image Source="{StaticResource Delete}"/>
                 </Button>
             </Grid>
         </Border>
         <shellstar:ShellstarInfoControl DataContext="{Binding ShellstarInfo}"/>
         <Button Content="Close" Width="70" Height="28" HorizontalAlignment="Right" Margin="0, 2, 2, 2"
-                Command="{Binding CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                Command="{StaticResource CloseCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
     </StackPanel>
 </UserControl>
