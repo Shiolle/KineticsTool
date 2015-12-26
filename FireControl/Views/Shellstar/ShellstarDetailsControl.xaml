@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="FireControl.Views.Shellstar.ShellstarDetailsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:shellstar="clr-namespace:FireControl.Views.Shellstar"
+             xmlns:cmd="clr-namespace:FireControl.Commands"
+             mc:Ignorable="d" 
+             Height="680" Width="510" MinHeight="680" MinWidth="510">
+    <UserControl.Resources>
+        <cmd:CloseWindowCommand x:Key="AttachCommand" Target="{Binding}" MethodName="AttachShellstar" IsReady="{Binding CanAttach}"/>
+        <cmd:CloseWindowCommand x:Key="CancelCommand" Target="{Binding}"/>
+    </UserControl.Resources>
+    <Grid>
+        <shellstar:ShellstarInfoControl HorizontalAlignment="Left" VerticalAlignment="Top" DataContext="{Binding ShellStarViewModel}" Margin="0,63,0,0"/>
+        <Button Content="Attach" HorizontalAlignment="Right" Margin="0,0,98,10" VerticalAlignment="Bottom" Width="83" Height="26"
+                CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
+                Command="{ StaticResource AttachCommand }" />
+        <Button Content="Cancel" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="83" Height="26"
+                Command="{StaticResource CancelCommand}" CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+        <Label Content="Tag" HorizontalAlignment="Left" Margin="2,2,0,0" VerticalAlignment="Top"/>
+        <TextBox Height="22" Margin="36,6,5,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Stretch"
+                    IsEnabled="{Binding IsDataAvailable}"
+                    Text="{Binding Tag}"/>
+        <shellstar:LaunchWindowControl HorizontalAlignment="Left" Margin="0,28,0,0" VerticalAlignment="Top" Width="510"
+                                       DataContext="{Binding LaunchWindowControlViewModel}"/>
+        <Border BorderThickness="2" BorderBrush="DarkRed" Margin="43,179,140,395" Background="White"
+                Visibility="{Binding NeedReferenceDirection, Converter={StaticResource VisibilityConverter}}">
+            <TextBlock Foreground="DarkRed" FontSize="32" FontWeight="ExtraBold" TextAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap">
+                SELECT REFERENCE DIRECTION
+            </TextBlock>
+        </Border>
+    </Grid>
+</UserControl>

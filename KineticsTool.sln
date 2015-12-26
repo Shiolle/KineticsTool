@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kinetics.Core", "Kinetics.Core\Kinetics.Core.csproj", "{B84DFE96-6218-47FD-93AD-8045C411157E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KineticToolTests", "KineticToolTests\KineticToolTests.csproj", "{65AAB594-E495-483B-BF23-BF599CDA0718}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FireControl", "FireControl\FireControl.csproj", "{D985FEE9-CB1D-4E4D-BE8B-21022C6895C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kinetics.Storage", "Kinetics.Storage\Kinetics.Storage.csproj", "{5F9537CD-F5FF-4448-AD7E-F49489818C6A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B84DFE96-6218-47FD-93AD-8045C411157E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B84DFE96-6218-47FD-93AD-8045C411157E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B84DFE96-6218-47FD-93AD-8045C411157E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B84DFE96-6218-47FD-93AD-8045C411157E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65AAB594-E495-483B-BF23-BF599CDA0718}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65AAB594-E495-483B-BF23-BF599CDA0718}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65AAB594-E495-483B-BF23-BF599CDA0718}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65AAB594-E495-483B-BF23-BF599CDA0718}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D985FEE9-CB1D-4E4D-BE8B-21022C6895C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D985FEE9-CB1D-4E4D-BE8B-21022C6895C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D985FEE9-CB1D-4E4D-BE8B-21022C6895C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D985FEE9-CB1D-4E4D-BE8B-21022C6895C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F9537CD-F5FF-4448-AD7E-F49489818C6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F9537CD-F5FF-4448-AD7E-F49489818C6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F9537CD-F5FF-4448-AD7E-F49489818C6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F9537CD-F5FF-4448-AD7E-F49489818C6A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

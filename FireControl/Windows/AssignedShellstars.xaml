@@ -1,0 +1,11 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Shellstar="clr-namespace:FireControl.Views.Shellstar" x:Class="FireControl.Windows.AssignedShellstars"
+        Icon="../Resources/Icons/FireControlB.ico"
+        Title="AssignedShellstars" Height="680" Width="515" ResizeMode="CanMinimize" Background="WhiteSmoke">
+    <Grid>
+        <Shellstar:ShellstarListControl HorizontalAlignment="Center" VerticalAlignment="Center"
+                                        DataContext="{Binding}"/>
+    </Grid>
+</Window>

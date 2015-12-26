@@ -1,0 +1,33 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:unitControl="clr-namespace:FireControl.Views.UnitControl"
+        xmlns:timeControl="clr-namespace:FireControl.Views.TimeControl"
+        xmlns:misc="clr-namespace:FireControl.Views.Misc"
+        x:Class="FireControl.Windows.MainWindow"
+        Title="Fire Control" Height="670" Width="900" MinHeight="670" MinWidth="900"
+        Icon="../Resources/Icons/FireControlB.ico"
+        Background="WhiteSmoke">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="565"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <unitControl:UnitList Grid.RowSpan="3" Margin="0,60,0,0" DataContext="{Binding UnitListViewModel}"/>
+
+        <timeControl:TurnControl VerticalAlignment="Top" DataContext="{Binding TurnControlViewModel}" Grid.Row="0" Grid.Column="0" Height="37" HorizontalAlignment="Right" Width="172"/>
+        <unitControl:SelectedUnit Grid.Column="1" Grid.Row="0" Width="560" HorizontalAlignment="Left"
+                                  DataContext="{Binding UpperSelection}" Height="310" VerticalAlignment="Top" Margin="5,0,0,0"/>
+        <unitControl:SelectedUnit Grid.Column="1" Grid.Row="2" Width="560" Margin="5,1,0,0"
+                                  DataContext="{Binding LowerSelection}" Height="310" VerticalAlignment="Top"/>
+
+        <misc:LogoPanel Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="150"
+                        DataContext="{Binding LogoPanel}"/>
+
+    </Grid>
+</Window>

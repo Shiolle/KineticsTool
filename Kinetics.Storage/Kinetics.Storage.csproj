@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5F9537CD-F5FF-4448-AD7E-F49489818C6A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kinetics.Storage</RootNamespace>
+    <AssemblyName>Kinetics.Storage</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration\CoilgunTypes\CoilgunType.cs" />
+    <Compile Include="Configuration\CoilgunTypes\CoilgunTypeConfigurationCollection.cs" />
+    <Compile Include="Configuration\CoilgunTypes\CoilgunTypeConfigurationElement.cs" />
+    <Compile Include="Configuration\CoilgunTypes\CoilgunTypesConfigurationSection.cs" />
+    <Compile Include="Configuration\Mapping\KineticsStorageMappingConfiguration.cs" />
+    <Compile Include="Configuration\MissileTypes\MissileType.cs" />
+    <Compile Include="Configuration\MissileTypes\MissileTypeConfigurationCollection.cs" />
+    <Compile Include="Configuration\MissileTypes\MissileTypeConfigurationElement.cs" />
+    <Compile Include="Configuration\MissileTypes\MissileTypesConfigurationSection.cs" />
+    <Compile Include="HitLocationTable\HitDirectionsSto.cs" />
+    <Compile Include="HitLocationTable\HitLocationSto.cs" />
+    <Compile Include="HitLocationTable\HitLocationTableSto.cs" />
+    <Compile Include="HitLocationTable\HitZoneSto.cs" />
+    <Compile Include="HitLocationTable\HullDepthDirectionSto.cs" />
+    <Compile Include="HitLocationTable\HitTablesCatalogSto.cs" />
+    <Compile Include="IStaticConfigurationController.cs" />
+    <Compile Include="IStorageController.cs" />
+    <Compile Include="Position\AvidWindowSto.cs" />
+    <Compile Include="Position\HexVectorComponentSto.cs" />
+    <Compile Include="Position\HexVectorSto.cs" />
+    <Compile Include="Shellstars\EvasionInfoSto.cs" />
+    <Compile Include="StaticConfigurationController.cs" />
+    <Compile Include="StorageController.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shellstars\ImpulseRecordSto.cs" />
+    <Compile Include="Shellstars\ShellstarSto.cs" />
+    <Compile Include="Situation\SitRepSto.cs" />
+    <Compile Include="Situation\UnitSto.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kinetics.Core\Kinetics.Core.csproj">
+      <Project>{b84dfe96-6218-47fd-93ad-8045c411157e}</Project>
+      <Name>Kinetics.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

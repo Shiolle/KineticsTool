@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B84DFE96-6218-47FD-93AD-8045C411157E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kinetics.Core</RootNamespace>
+    <AssemblyName>Kinetics.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.Unity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\Avid\AvidModel.cs" />
+    <Compile Include="Data\Avid\AvidModelLink.cs" />
+    <Compile Include="Data\Avid\AvidModelWindow.cs" />
+    <Compile Include="Data\Avid\AvidOrientation.cs" />
+    <Compile Include="Data\Avid\AvidPathfindingResult.cs" />
+    <Compile Include="Data\Avid\AvidPathInfo.cs" />
+    <Compile Include="Data\Avid\AvidPathingOptions.cs" />
+    <Compile Include="Data\Avid\LinkedAvidNode.cs" />
+    <Compile Include="Data\FiringSolution\MissileAccelerationData.cs" />
+    <Compile Include="Data\FiringSolution\MissileAccelerationImpulse.cs" />
+    <Compile Include="Data\HexVectors\RawHexVector.cs" />
+    <Compile Include="Data\HitLocationTable\HitLocation.cs" />
+    <Compile Include="Data\HitLocationTable\HitLocationTable.cs" />
+    <Compile Include="Data\HitLocationTable\HitZoneColumn.cs" />
+    <Compile Include="Data\HitLocationTable\HitZone.cs" />
+    <Compile Include="Data\HitLocationTable\SystemHitResult.cs" />
+    <Compile Include="Data\RefData\AimAdjustment.cs" />
+    <Compile Include="Data\RefData\ShotGeometryCondition.cs" />
+    <Compile Include="Data\RefData\ShotGeometryTableResult.cs" />
+    <Compile Include="Data\RefTableResult.cs" />
+    <Compile Include="Data\HitLocationTable\HitBreakdown.cs" />
+    <Compile Include="Interfaces\Calculators\IAvidPathfinder.cs" />
+    <Compile Include="Interfaces\Calculators\IHitCalculator.cs" />
+    <Compile Include="Interfaces\Calculators\IShellstarBuilder.cs" />
+    <Compile Include="Interfaces\RefData\IAvidModelBuilder.cs" />
+    <Compile Include="Interfaces\RefData\IMissilePositionAdjustmentTable.cs" />
+    <Compile Include="Interfaces\RefData\IProjectileDamageTable.cs" />
+    <Compile Include="Interfaces\Utility\IVectorLibrary.cs" />
+    <Compile Include="Logic\Calculators\AvidCalculator.cs" />
+    <Compile Include="Logic\Calculators\AvidPathfinder.cs" />
+    <Compile Include="Logic\Calculators\FiringSolutionCalculator.cs" />
+    <Compile Include="Logic\Calculators\HexGridCalculator.cs" />
+    <Compile Include="Logic\Calculators\HexVectorUtility.cs" />
+    <Compile Include="Data\Avid\AvidDirection.cs" />
+    <Compile Include="Data\Avid\AvidRing.cs" />
+    <Compile Include="Data\Avid\AvidVector.cs" />
+    <Compile Include="Data\FiringSolution\ImpulseTrackElement.cs" />
+    <Compile Include="Data\FiringSolution\ShellstarInfo.cs" />
+    <Compile Include="Data\HexVectors\HexVectorComponent.cs" />
+    <Compile Include="Data\Avid\AvidWindow.cs" />
+    <Compile Include="Data\FiringSolution\FiringSolution.cs" />
+    <Compile Include="Data\HexGrid\HexGridCoordinate.cs" />
+    <Compile Include="Data\HexVectors\HexAxis.cs" />
+    <Compile Include="Data\HexVectors\HexVector.cs" />
+    <Compile Include="Data\TurnData.cs" />
+    <Compile Include="Logic\Calculators\HitCalculator.cs" />
+    <Compile Include="Logic\Calculators\ShellstarBuilder.cs" />
+    <Compile Include="Logic\RefData\AvidModelBuilder.cs" />
+    <Compile Include="Logic\RefData\MissilePositionAdjustmentTable.cs" />
+    <Compile Include="Logic\RefData\ProjectileDamageTable.cs" />
+    <Compile Include="Logic\Utility\Consts.cs" />
+    <Compile Include="Logic\Utility\Qauternion.cs" />
+    <Compile Include="Logic\Utility\Vector3.cs" />
+    <Compile Include="Logic\Utility\VectorLibrary.cs" />
+    <Compile Include="MockableServiceFactory.cs" />
+    <Compile Include="Infrastructure\CompositionRoot.cs" />
+    <Compile Include="Infrastructure\ServiceLibrary.cs" />
+    <Compile Include="Interfaces\Calculators\IAvidCalculator.cs" />
+    <Compile Include="Interfaces\Formatting\IAvidNotationFormatter.cs" />
+    <Compile Include="Interfaces\Calculators\IFiringSolutionCalculator.cs" />
+    <Compile Include="Interfaces\Calculators\IHexGridCalculator.cs" />
+    <Compile Include="Interfaces\Infrastructure\IServiceLibrary.cs" />
+    <Compile Include="Interfaces\RefData\IRangeAltitudeTable.cs" />
+    <Compile Include="Interfaces\RefData\IShotGeometryTable.cs" />
+    <Compile Include="Interfaces\Calculators\IHexVectorUtility.cs" />
+    <Compile Include="Presentation\FormattingExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Logic\RefData\RangeAltitudeTable.cs" />
+    <Compile Include="Logic\RefData\ShotGeometryTable.cs" />
+    <Compile Include="ServiceFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

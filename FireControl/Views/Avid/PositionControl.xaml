@@ -1,0 +1,49 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vl="clr-namespace:FireControl.Validation"
+             xmlns:cmd="clr-namespace:FireControl.Commands"
+             x:Class="FireControl.Views.Avid.PositionControl"
+             mc:Ignorable="d" Width="252" Height="125">
+    <UserControl.Resources>
+        <cmd:MoveUnitCommand x:Key="CmdMoveA" Direction="A" Target="{Binding}" MethodName="MoveUnit"/>
+        <cmd:MoveUnitCommand x:Key="CmdMoveB" Direction="B" Target="{Binding}" MethodName="MoveUnit"/>
+        <cmd:MoveUnitCommand x:Key="CmdMoveC" Direction="C" Target="{Binding}" MethodName="MoveUnit"/>
+        <cmd:MoveUnitCommand x:Key="CmdMoveD" Direction="D" Target="{Binding}" MethodName="MoveUnit"/>
+        <cmd:MoveUnitCommand x:Key="CmdMoveE" Direction="E" Target="{Binding}" MethodName="MoveUnit"/>
+        <cmd:MoveUnitCommand x:Key="CmdMoveF" Direction="F" Target="{Binding}" MethodName="MoveUnit"/>
+        <cmd:MoveUnitCommand x:Key="CmdMoveUp" Direction="Up" Target="{Binding}" MethodName="MoveUnit"/>
+        <cmd:MoveUnitCommand x:Key="CmdMoveDown" Direction="Down" Target="{Binding}" MethodName="MoveUnit"/>
+    </UserControl.Resources>
+    <Grid>
+        <Label Content="Grid Position" HorizontalAlignment="Left" Margin="6,5,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="89,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="137"
+                 Style="{StaticResource ValidatedTextBoxWithComment}">
+            <TextBox.Text>
+                <Binding Path="Position" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <vl:HexCoordinatesValidation/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Button x:Name="BtMoveA" Content="A" HorizontalAlignment="Left" Margin="79,39,0,0" VerticalAlignment="Top" Width="45"
+                Command="{StaticResource CmdMoveA}"/>
+        <Button x:Name="BtMoveB" Content="B" HorizontalAlignment="Left" Margin="129,55,0,0" VerticalAlignment="Top" Width="45"
+                Command="{StaticResource CmdMoveB}"/>
+        <Button x:Name="BtMoveC" Content="C" HorizontalAlignment="Left" Margin="129,82,0,0" VerticalAlignment="Top" Width="45"
+                Command="{StaticResource CmdMoveC}"/>
+        <Button x:Name="BtMoveD" Content="D" HorizontalAlignment="Left" Margin="79,97,0,0" VerticalAlignment="Top" Width="45"
+                Command="{StaticResource CmdMoveD}"/>
+        <Button x:Name="BtMoveF" Content="F" HorizontalAlignment="Left" Margin="29,55,0,0" VerticalAlignment="Top" Width="45"
+                Command="{StaticResource CmdMoveF}"/>
+        <Button x:Name="BtMoveE" Content="E" HorizontalAlignment="Left" Margin="29,82,0,0" VerticalAlignment="Top" Width="45"
+                Command="{StaticResource CmdMoveE}"/>
+        <Button x:Name="BtMoveUp" Content="Up" HorizontalAlignment="Left" Margin="181,39,0,0" VerticalAlignment="Top" Width="45"
+                Command="{StaticResource CmdMoveUp}"/>
+        <Button x:Name="BtMoveDown" Content="Down" HorizontalAlignment="Left" Margin="181,97,0,0" VerticalAlignment="Top" Width="45"
+                Command="{StaticResource CmdMoveDown}"/>
+    </Grid>
+</UserControl>

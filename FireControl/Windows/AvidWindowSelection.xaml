@@ -1,0 +1,10 @@
+﻿<Window x:Class="FireControl.Windows.AvidWindowSelection"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:miscControls="clr-namespace:FireControl.Views.Misc"
+        Title="{Binding Caption}" Height="210" Width="394"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
+        Background="WhiteSmoke"
+        Icon="../Resources/Icons/FireControlB.ico">
+    <miscControls:DirectionSelection DataContext="{Binding}" />
+</Window>

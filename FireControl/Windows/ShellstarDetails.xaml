@@ -1,0 +1,10 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:shellstar="clr-namespace:FireControl.Views.Shellstar" x:Class="FireControl.Windows.ShellstarDetails"
+        Icon="../Resources/Icons/FireControlB.ico"
+        Title="ShellstarDetails" Height="720" Width="520" ResizeMode="NoResize" Background="#C6C7C9">
+    <Grid>
+        <shellstar:ShellstarDetailsControl DataContext="{Binding}"/>
+    </Grid>
+</Window>

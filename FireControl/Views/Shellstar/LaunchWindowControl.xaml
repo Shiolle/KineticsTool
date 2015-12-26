@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="FireControl.Views.Shellstar.LaunchWindowControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:cmd="clr-namespace:FireControl.Commands"
+             mc:Ignorable="d" Height="35" Width="445">
+    <UserControl.Resources>
+        <cmd:ShowWindowCommand x:Key="SelectReferenceDirectionCommand" Target="{Binding SelectReferenceDirection}" AsDialog="True" ViewType="FireControl.Windows.AvidWindowSelection"/>
+        <cmd:ShowWindowCommand x:Key="SelectWindowCommand" Target="{Binding SelectLaunchWindow}" AsDialog="True" ViewType="FireControl.Windows.AvidWindowSelection"/>
+        <cmd:SimpleCommand x:Key="SetDefaultWindowCommand" Target="{Binding}" MethodName="SetDefaultWindow" />
+    </UserControl.Resources>
+    <Grid>
+        <Label Content="Launch window:" HorizontalAlignment="Left" Margin="4,4,345,5" VerticalAlignment="Center" Width="96"/>
+        <ComboBox Margin="102,4,253,5" ItemsSource="{Binding AvailableWindows}" Height="26" Width="90"
+                  HorizontalAlignment="Left" VerticalAlignment="Center"
+                  SelectedItem="{Binding SelectedWindow}" IsEnabled="{Binding CanSelectLaunchWindow}">
+        </ComboBox>
+        <Button Content="Set reference direction..." HorizontalAlignment="Left" Margin="196,6,101,7" VerticalAlignment="Center" Width="148"
+                Command="{StaticResource SelectReferenceDirectionCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
+                Visibility="{Binding ReferenceDirectionAvailable, Converter={StaticResource VisibilityConverter}}">
+        </Button>
+        <Button Content="Set custom..." HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,7,7,8" Width="88"
+                Command="{StaticResource SelectWindowCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="NavigationRequired" SourceObject="{Binding SelectReferenceDirection}">
+                <i:InvokeCommandAction Command="{StaticResource SelectReferenceDirectionCommand}"
+                                       CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+            </i:EventTrigger>
+            <i:EventTrigger EventName="NavigationRequired" SourceObject="{Binding SelectLaunchWindow}">
+                <i:InvokeCommandAction Command="{StaticResource SelectWindowCommand}"
+                                       CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+            </i:EventTrigger>
+            <i:EventTrigger EventName="Loaded">
+                <i:InvokeCommandAction Command="{StaticResource SetDefaultWindowCommand}" />
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+    </Grid>
+</UserControl>

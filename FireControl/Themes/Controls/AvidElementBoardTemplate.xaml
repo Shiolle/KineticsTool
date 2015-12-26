@@ -1,0 +1,95 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:FireControl.Controls"
+                    xmlns:avid="clr-namespace:FireControl.ValueConverters.Avid"
+                    xmlns:avidElementBoard="clr-namespace:FireControl.ViewModels.AvidElementBoard">
+    <Style TargetType="{x:Type controls:AvidElementBoard}">
+        <Style.Resources>
+            <BooleanToVisibilityConverter x:Key="MarkVisibilityConverter"/>
+            <avid:BooleanToShapeThickness x:Key="ShapeThicknessConverter" DefaultThickness="3"/>
+            <avid:BooleanToUnderline x:Key="BooleanToUnderline"/>
+            <avid:SharingPositionToScale x:Key="ScaleConverter" ScalingFactor="1.8"/>
+            <Style x:Key="MarkText" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Foreground" Value="Black"></Setter>
+            </Style>
+        </Style.Resources>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <Canvas/>
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemsSource">
+            <Setter.Value>
+                <Binding Path="Marks"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <ItemsPresenter/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style TargetType="ContentPresenter">
+                    <Setter Property="Canvas.Left">
+                        <Setter.Value>
+                            <Binding>
+                                <Binding.Converter>
+                                    <avid:PositionToCanvasCoordinate Axis="AxisX" ScalingFactor="1.8" ElementDiameter="33" RingWidth="36.5" CanvasSize="262"/>
+                                                                     <!--RingRadius="{Binding Path=RingRadius, RelativeSource={RelativeSource FindAncestor, AncestorType=controls:AvidElementBoard}}"
+                                                                     ElementRadius="{Binding Path=ElementRadius, RelativeSource={RelativeSource FindAncestor, AncestorType=controls:AvidElementBoard}}"
+                                                                     CanvasSize="{Binding Path=Width, RelativeSource={RelativeSource TemplatedParent}}"/>-->
+                                    <!--RingRadius="{Binding Path=RingRadius, RelativeSource={RelativeSource TemplatedParent}}"-->
+                                </Binding.Converter>
+                            </Binding>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Canvas.Top">
+                        <Setter.Value>
+                            <Binding>
+                                <Binding.Converter>
+                                    <avid:PositionToCanvasCoordinate Axis="AxisY" ScalingFactor="1.6" ElementDiameter="33" RingWidth="36.5" CanvasSize="262"/>
+                                                                     <!--RingRadius="{Binding Path=RingRadius, RelativeSource={RelativeSource TemplatedParent}}"
+                                                                     ElementRadius="{Binding Path=ElementRadius, RelativeSource={RelativeSource TemplatedParent}}"
+                                                                     CanvasSize="{Binding Path=Width, RelativeSource={RelativeSource TemplatedParent}}"/>-->
+                                </Binding.Converter>
+                            </Binding>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate DataType="avidElementBoard:AvidMarkViewModel">
+                    <Border Width="35" Height="35" BorderBrush="Black" CornerRadius="20"
+                                    Visibility="{Binding Visible, Converter={StaticResource MarkVisibilityConverter}}"
+                                    BorderThickness="{Binding Window.AbovePlane, Converter={StaticResource ShapeThicknessConverter}}">
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="{Binding SharingPosition, Converter={StaticResource ScaleConverter}}"
+                                                ScaleY="{Binding SharingPosition, Converter={StaticResource ScaleConverter}}"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                        <TextBlock Text="{Binding Text}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="2,2,2,0" TextWrapping="NoWrap">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock" BasedOn="{StaticResource MarkText}">
+                                    <Setter Property="TextDecorations" Value="{Binding Underlined, Converter={StaticResource BooleanToUnderline}}"/>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Border>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

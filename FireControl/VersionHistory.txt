@@ -1,0 +1,27 @@
+Version 0.8 - First functional version.
+	Features:
+		- Turn control
+		- Unit list
+		- Unit list saving and loading
+		- Unit selection
+		- Unit movement
+		- Weapon selection
+		- Targeting AVID
+		- Shot geometry table display
+		- RoC worksheet
+		- Missile acceleration calculation
+		- MPAT display
+		- ShellStar information
+		- ShellStar tags
+		- View incoming ShellStars for each unit
+		- Saving and loading ShellStar details
+		
+Version 0.8.1 - Bug fixes and new ShellStar card
+	Features:
+		+ Moved to the last version of ShellStar card
+		
+	Bug fixes:
+		- Tags are now properly loaded
+		- Default tags now correctly say whether the ShellStar is a missile or a coil gun salvo
+		- A default extension is now added on saving unit list (unless user specifies another one).
+		- ShellStar button on selected unit control now properly updates upon unit selection.

@@ -1,0 +1,69 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             x:Class="FireControl.Views.Avid.VectorsControl" 
+             mc:Ignorable="d" Width="250" Height="285"
+             MinWidth="250" MinHeight="285"
+             MaxWidth="250" MaxHeight="285">
+    <UserControl.Resources>
+        <BitmapImage x:Key="AvidBkg" UriSource="..\..\Resources\Avid2.png" />
+    </UserControl.Resources>
+    <Grid Margin="0,0,0,0">
+        <Image Source="{StaticResource AvidBkg}" HorizontalAlignment="Left" Width="221" Height="193" VerticalAlignment="Top" Margin="10,46,0,0"/>
+        <xctk:DecimalUpDown HorizontalAlignment="Left" Margin="85,26,0,0" VerticalAlignment="Top" Width="71" Value="{Binding ComponentA}"/>
+        <Label Content="F" HorizontalAlignment="Left" Margin="10,51,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.263,-0.192" FontWeight="Bold"/>
+        <xctk:DecimalUpDown Value="{Binding ComponentD}" HorizontalAlignment="Left" Margin="85,239,0,0" VerticalAlignment="Top" Width="71"/>
+        <Label Content="D" HorizontalAlignment="Left" Margin="110,259,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.263,-0.192" FontWeight="Bold"/>
+        <xctk:DecimalUpDown Value="{Binding ComponentF}" HorizontalAlignment="Left" Margin="-5,76,0,0" VerticalAlignment="Top" Width="71" RenderTransformOrigin="0.5,0.5">
+            <xctk:DecimalUpDown.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-60"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </xctk:DecimalUpDown.RenderTransform>
+        </xctk:DecimalUpDown>
+        <Label Content="A" HorizontalAlignment="Left" Margin="110,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.263,-0.192" FontWeight="Bold"/>
+        <xctk:DecimalUpDown Value="{Binding ComponentE}" HorizontalAlignment="Left" Margin="-6,187,0,0" VerticalAlignment="Top" Width="71" RenderTransformOrigin="0.5,0.5">
+            <xctk:DecimalUpDown.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="60"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </xctk:DecimalUpDown.RenderTransform>
+        </xctk:DecimalUpDown>
+        <Label Content="E" HorizontalAlignment="Left" Margin="10,213,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.263,-0.192" FontWeight="Bold"/>
+        <xctk:DecimalUpDown Value="{Binding ComponentB}" HorizontalAlignment="Left" Margin="175,75,0,0" VerticalAlignment="Top" Width="71" RenderTransformOrigin="0.5,0.5">
+            <xctk:DecimalUpDown.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="60"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </xctk:DecimalUpDown.RenderTransform>
+        </xctk:DecimalUpDown>
+        <xctk:DecimalUpDown Value="{Binding ComponentC}" HorizontalAlignment="Left" Margin="175,188,0,0" VerticalAlignment="Top" Width="71" RenderTransformOrigin="0.5,0.5">
+            <xctk:DecimalUpDown.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-60"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </xctk:DecimalUpDown.RenderTransform>
+        </xctk:DecimalUpDown>
+        <Label Content="B" HorizontalAlignment="Left" Margin="220,59,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.263,-0.192" FontWeight="Bold"/>
+        <Label Content="C" HorizontalAlignment="Left" Margin="220,213,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.263,-0.192" FontWeight="Bold"/>
+        <xctk:DecimalUpDown Value="{Binding ComponentUp}" HorizontalAlignment="Left" Margin="0,26,0,0" VerticalAlignment="Top" Width="71"/>
+        <Label Content="Up" HorizontalAlignment="Left" Margin="16,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.263,-0.192" FontWeight="Bold"/>
+        <xctk:DecimalUpDown Value="{Binding ComponentDown}" HorizontalAlignment="Left" Margin="167,239,0,0" VerticalAlignment="Top" Width="71"/>
+        <Label Content="Down" HorizontalAlignment="Left" Margin="180,259,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.263,-0.192" FontWeight="Bold"/>
+    </Grid>
+</UserControl>

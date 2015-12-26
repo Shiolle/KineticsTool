@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="FireControl.Views.Misc.LogoPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cmd="clr-namespace:FireControl.Commands"
+             mc:Ignorable="d" 
+             Width="150" d:DesignWidth="55">
+    <UserControl.Resources>
+        <BitmapImage x:Key="KtLogo" UriSource="..\..\Resources\KT_Logo.png" />
+        <cmd:SimpleCommand x:Key="ShowDisclaimerCommand" MethodName="ShowDisclaimerBox" Target="{Binding}"/>
+    </UserControl.Resources>
+    <Grid>
+        <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                Command="{StaticResource ShowDisclaimerCommand}">
+            <Image Source="{StaticResource KtLogo}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        </Button>
+    </Grid>
+</UserControl>

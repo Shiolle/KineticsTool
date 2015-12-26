@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="FireControl.Views.LaunchBoard.ShotGeometryTable"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:tables="clr-namespace:FireControl.ValueConverters.Tables"
+             mc:Ignorable="d" 
+             Height="135" Width="450" MinWidth="450" MinHeight="135" MaxWidth="450" MaxHeight="135">
+    <UserControl.Resources>
+        <BitmapImage x:Key="Sgt" UriSource="..\..\Resources\Sgt.png" />
+        <Style x:Key="MarkerStyle" TargetType="Rectangle">
+            <Setter Property="Stroke" Value="Navy"/>
+            <Setter Property="StrokeThickness" Value="2"/>
+        </Style>
+        <tables:TablePositionToCoordinate x:Key="LeftConverter" CoordinateShift="133" Step="38.333" PositionShift="0"/>
+        <tables:TablePositionToCoordinate x:Key="TopConverter" CoordinateShift="0" Step="19.25" PositionShift="1"/>
+    </UserControl.Resources>
+    <Grid>
+        <Image Source="{StaticResource Sgt}"/>
+
+        <Canvas HorizontalAlignment="Left" Height="116" Margin="2,16,0,0" VerticalAlignment="Top" Width="446">
+            <Rectangle Height="20" Width="40" Style="{StaticResource MarkerStyle}"
+                       Visibility="{Binding DataAvailable, Converter={StaticResource VisibilityConverter}}"
+                       Canvas.Left="{Binding TableColumn, Converter={StaticResource LeftConverter}}"/>
+            <Rectangle Height="20" Width="135" Style="{StaticResource MarkerStyle}"
+                       Visibility="{Binding DataAvailable, Converter={StaticResource VisibilityConverter}}"
+                       Canvas.Top="{Binding TableRow, Converter={StaticResource TopConverter}}"/>
+            <Rectangle Height="20" Width="40" Style="{StaticResource MarkerStyle}"
+                       Visibility="{Binding DataAvailable, Converter={StaticResource VisibilityConverter}}"
+                       Canvas.Left="{Binding TableColumn, Converter={StaticResource LeftConverter}}"
+                       Canvas.Top="{Binding TableRow, Converter={StaticResource TopConverter}}"/>
+            <Rectangle Height="20" Width="40" Style="{StaticResource MarkerStyle}" Canvas.Bottom="0"
+                       Visibility="{Binding DataAvailable, Converter={StaticResource VisibilityConverter}}"
+                       Canvas.Left="{Binding TableColumn, Converter={StaticResource LeftConverter}}"/>
+            <Rectangle Height="20" Width="44" Style="{StaticResource MarkerStyle}" Canvas.Right="0"
+                       Visibility="{Binding DataAvailable, Converter={StaticResource VisibilityConverter}}"
+                       Canvas.Top="{Binding TableRow, Converter={StaticResource TopConverter}}"/>
+        </Canvas>
+    </Grid>
+</UserControl>

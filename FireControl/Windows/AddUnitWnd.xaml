@@ -1,0 +1,13 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:unitControl="clr-namespace:FireControl.Views.UnitControl" x:Class="FireControl.Windows.AddUnitWnd"
+        Title="Add Unit" Height="115" Width="415" WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
+        Icon="../Resources/Icons/FireControlB.ico"
+        Background="WhiteSmoke">
+    <Grid>
+
+        <unitControl:AddUnitControl Width="Auto" Height="Auto" Margin="0,0,0,1" DataContext="{ Binding }"/>
+
+    </Grid>
+</Window>

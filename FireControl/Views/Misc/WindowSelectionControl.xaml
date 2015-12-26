@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="FireControl.Views.Misc.DirectionSelection"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cmd="clr-namespace:FireControl.Commands"
+             xmlns:misc="clr-namespace:FireControl.ViewModels.Misc"
+             mc:Ignorable="d" Height="168" Width="375" d:DataContext="{d:DesignInstance Type=misc:WindowSelectionViewModel, IsDesignTimeCreatable=False }">
+    <UserControl.Resources>
+        <cmd:CloseWindowCommand x:Key="ApplyCommand" Target="{Binding}" MethodName="Apply"/>
+    </UserControl.Resources>
+    <Grid>
+        <TextBlock TextWrapping="Wrap" Text="{Binding Message}"
+                   HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="94" Margin="10,10,10,0"
+                   Style="{ StaticResource CommentStyle }" TextAlignment="Center"/>
+        <ComboBox HorizontalAlignment="Center" Margin="109,0,190,34" VerticalAlignment="Bottom" Width="76" ItemsSource="{Binding Directions}"
+                  SelectedItem="{Binding SelectedDirection}" IsEditable="False" IsEnabled="{Binding CanEditDirection}"/>
+        <Button Content="Apply" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="76" Margin="151,0,148,6" Command="{StaticResource ApplyCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+        <ComboBox HorizontalAlignment="Center" Margin="193,0,106,34" VerticalAlignment="Bottom" Width="76" ItemsSource="{Binding Rings}"
+                  SelectedItem="{Binding SelectedRing}" IsEditable="False" IsEnabled="{Binding CanEditRing}"/>
+        <Label Content="Direction" HorizontalAlignment="Center" Margin="43,0,272,31" VerticalAlignment="Bottom" Width="60"/>
+        <Label Content="Ring" HorizontalAlignment="Center" Margin="279,0,62,34" VerticalAlignment="Bottom"/>
+    </Grid>
+</UserControl>

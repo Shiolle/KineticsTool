@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="FireControl.Views.Shellstar.ShellstarInfoControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:shellStars="clr-namespace:FireControl.Models.Implementation.ShellStars"
+             mc:Ignorable="d" Height="565" Width="500" MaxHeight="565" MaxWidth="500" MinHeight="565" MinWidth="500">
+    <UserControl.Resources>
+        <BitmapImage x:Key="Shellstar" UriSource="../../Resources/Shellstar500.png"/>
+        <Style x:Key="ImpulseTrackPanel" TargetType="ItemsControl">
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"/>
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate DataType="{x:Type shellStars:ImpulseTrackElementModel}">
+                        <Grid Width="82" Height="64">
+                            <Label Content="{Binding Impulse}" Margin="0,2,0,36" HorizontalContentAlignment="Center"/>
+                            <TextBlock x:Name="RangeText" Text="{Binding Range}" Margin="0,21,0,15" HorizontalAlignment="Center" TextWrapping="NoWrap" FontWeight="Bold" FontSize="20"
+                                       Visibility="{Binding IsVisible, Converter={StaticResource VisibilityConverter}}"/>
+                        </Grid>
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding IsBurning}" Value="True">
+                                <Setter Property="TextDecorations" TargetName="RangeText" Value="Underline"/>
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Image Source="{StaticResource Shellstar}"></Image>
+        <ItemsControl HorizontalAlignment="Left" VerticalAlignment="Top" Width="494" Height="64" Margin="1,336,0,0"
+                      ItemsSource="{Binding ImpulseTrack[2]}" Style="{StaticResource ImpulseTrackPanel}"/>
+        <ItemsControl HorizontalAlignment="Left" VerticalAlignment="Top" Width="494" Height="64" Margin="2,403,0,0"
+                      ItemsSource="{Binding ImpulseTrack[1]}" Style="{StaticResource ImpulseTrackPanel}"/>
+        <ItemsControl HorizontalAlignment="Left" VerticalAlignment="Top" Width="494" Height="64" Margin="2,472,0,0"
+                      ItemsSource="{Binding ImpulseTrack[0]}" Style="{StaticResource ImpulseTrackPanel}"/>
+        <Border BorderThickness="1" BorderBrush="DarkGray" Background="WhiteSmoke" Margin="5,268,380,234">
+            <Label Style="{StaticResource ShellstarInfoStyle}" Height="Auto" Width="Auto"
+                   Visibility="{Binding ImpulseOverflow, Converter={StaticResource VisibilityConverter}}"
+                   Content="{Binding ImpulseOverflowMessage}"/>
+        </Border>
+        <Label Content="{Binding TargetName}" Style="{StaticResource ShellstarInfoStyle}" Margin="283,13,7,512" Width="Auto" Height="Auto"/>
+        <Label Style="{StaticResource InfoStyle}" Margin="410,72,0,456" Width="Auto"
+               Content="{Binding RoC}"/>
+        <Label Style="{StaticResource InfoStyle}" Margin="418,152,7,373" Height="Auto"
+               Content="{Binding Dmg50}" Width="Auto"/>
+        <Label Style="{StaticResource InfoStyle}" Margin="418,189,7,336" Width="Auto" Height="Auto"
+               Content="{Binding Dmg100}"/>
+        <Label Style="{StaticResource InfoStyle}" Margin="418,226,7,299" Height="Auto"
+               Content="{Binding Dmg200}" Width="Auto"/>
+        <Label Style="{StaticResource InfoStyle}" Margin="329,94,96,431" Height="Auto"
+               Content="{Binding EvasionR}" Width="Auto"/>
+        <Label Style="{StaticResource InfoStyle}" Margin="94,10,331,515" Height="Auto"
+               Content="{Binding EvasionU}" Width="Auto"/>
+        <Label Style="{StaticResource InfoStyle}" Margin="242,285,183,240" Height="Auto"
+               Content="{Binding EvasionD}" Width="Auto"/>
+        <Label Style="{StaticResource InfoStyle}" Margin="15,210,410,315" Height="Auto"
+               Content="{Binding EvasionL}" Width="Auto"/>
+        <Label Style="{StaticResource InfoStyle}" Margin="10,25,415,500" Height="Auto"
+               Content="{Binding ImpactWindow}" Width="Auto"/>
+    </Grid>
+</UserControl>
