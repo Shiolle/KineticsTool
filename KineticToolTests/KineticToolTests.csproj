@@ -61,7 +61,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="AvidCalculatorRotationTests.cs" />
-    <Compile Include="AvidCalculatorTests.cs" />
+    <Compile Include="AvidProjectionTests.cs" />
     <Compile Include="AvidDistanceTests.cs" />
     <Compile Include="AvidPathingTests.cs" />
     <Compile Include="Common\TestChecksUtility.cs" />

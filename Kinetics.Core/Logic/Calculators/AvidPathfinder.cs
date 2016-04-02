@@ -107,15 +107,6 @@ namespace Kinetics.Core.Logic.Calculators
                 return true;
             }
 
-            //if (currentNode.NodeDepth == 5 && currentNode.Window.Direction == AvidDirection.CD && currentNode.Window.Ring == AvidRing.Blue)
-            //{
-            //    var result = TracePath(currentNode, null, null);
-            //    if (result.PathNodes[2].Window.Direction == AvidDirection.B && result.PathNodes[2].Window.Ring == AvidRing.Blue)
-            //    {
-                    
-            //    }
-            //}
-
             switch (options)
             {
                 case AvidPathingOptions.DiagonalTransitionsIgnored:

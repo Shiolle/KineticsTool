@@ -23,8 +23,7 @@ namespace Kinetics.Core.Data.Avid
             get
             {
                 return Ring == AvidRing.Green &&
-                       Direction != AvidDirection.Undefined &&
-                       (byte)Direction % 2 == 0; // Corner directions are all even.
+                       IsCorner;
             }
         }
 

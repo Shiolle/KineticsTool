@@ -57,6 +57,8 @@ namespace Kinetics.Core.Infrastructure
             _container.RegisterType<IFiringSolutionCalculator, FiringSolutionCalculator>();
             _container.RegisterType<IShellstarBuilder, ShellstarBuilder>();
             _container.RegisterType<IAvidPathfinder, AvidPathfinder>();
+            _container.RegisterType<IAvidProjectionCalculator, AvidProjectionCalculator>();
+            _container.RegisterType<IHexCoordinatesUtility, HexCoordinatesUtility>();
         }
 
         private void RegisterTableData()

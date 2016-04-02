@@ -33,8 +33,8 @@ namespace KineticToolTests
             vectorA.Equals(vectorB).Should().BeFalse();
             (vectorA == vectorC).Should().BeFalse();
             vectorA.Equals(vectorC).Should().BeTrue();
-            vectorA.Equals(HexVector.Zero).Should().BeFalse();
-            HexVector.Zero.Equals(null).Should().BeTrue();
+            vectorA.Equals(RawHexVector.Zero).Should().BeFalse();
+            RawHexVector.Zero.Equals(null).Should().BeTrue();
         }
     }
 }

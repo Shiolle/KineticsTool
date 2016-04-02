@@ -10,6 +10,8 @@ namespace Kinetics.Core.Interfaces.Infrastructure
     {
         IAvidCalculator AvidCalculator { get; }
 
+        IAvidProjectionCalculator AvidProjectionCalculator { get; }
+
         IHexGridCalculator HexGridCalculator { get; }
 
         IHexVectorUtility HexVectorUtility { get; }

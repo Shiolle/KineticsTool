@@ -75,6 +75,8 @@
     <Compile Include="Data\RefTableResult.cs" />
     <Compile Include="Data\HitLocationTable\HitBreakdown.cs" />
     <Compile Include="Interfaces\Calculators\IAvidPathfinder.cs" />
+    <Compile Include="Interfaces\Calculators\IAvidProjectionCalculator.cs" />
+    <Compile Include="Interfaces\Calculators\IHexCoordinatesUtility.cs" />
     <Compile Include="Interfaces\Calculators\IHitCalculator.cs" />
     <Compile Include="Interfaces\Calculators\IShellstarBuilder.cs" />
     <Compile Include="Interfaces\RefData\IAvidModelBuilder.cs" />
@@ -84,6 +86,8 @@
     <Compile Include="Logic\Calculators\AvidCalculator.cs" />
     <Compile Include="Logic\Calculators\AvidPathfinder.cs" />
     <Compile Include="Logic\Calculators\FiringSolutionCalculator.cs" />
+    <Compile Include="Logic\Calculators\AvidProjectionCalculator.cs" />
+    <Compile Include="Logic\Calculators\HexCoordinatesUtility.cs" />
     <Compile Include="Logic\Calculators\HexGridCalculator.cs" />
     <Compile Include="Logic\Calculators\HexVectorUtility.cs" />
     <Compile Include="Data\Avid\AvidDirection.cs" />

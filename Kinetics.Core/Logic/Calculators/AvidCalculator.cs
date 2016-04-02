@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Linq;
-using Kinetics.Core.Data.HexGrid;
-using Kinetics.Core.Data.HexVectors;
 using Kinetics.Core.Data.Avid;
 using Kinetics.Core.Interfaces.Calculators;
 using Kinetics.Core.Interfaces.RefData;
@@ -28,64 +26,6 @@ namespace Kinetics.Core.Logic.Calculators
             _vectorLibrary = vectorLibrary;
             _avidModel = avidModelBuilder.BuildModel();
             _avidPathfinder = avidPathfinder;
-        }
-
-        public AvidVector ProjectVectorToAvid(HexVector vector)
-        {
-            var result = new AvidVector
-            {
-                Magnitude = _rangeAltitudeTable.GetDistance(vector)
-            };
-
-            if (result.Magnitude == 0)
-            {
-                return result;
-            }
-
-            result.Ring = _rangeAltitudeTable.GetRing(vector);
-            result.AbovePlane = result.Ring == AvidRing.Ember || vector.VerticalComponent.Direction == HexAxis.Up;
-            result.Direction = CalculateDirection(vector, result.Ring);
-
-            return result;
-        }
-
-        private AvidDirection CalculateDirection(HexVector vector, AvidRing ring)
-        {
-            if (ring == AvidRing.Magenta)
-            {
-                return AvidDirection.Undefined;
-            }
-
-            if (vector.PlanarProjection == 0)
-            {
-                throw new ArithmeticException("The ring is not magenta, but planar projection is zero.");
-            }
-
-            if (vector.PrimaryComponent.Direction == vector.SecondaryComponent.Direction && vector.SecondaryComponent.Magnitude != 0)
-            {
-                throw new ArithmeticException("Primary and secondary vectors are both positive but are in the same direction.");
-            }
-
-            int primaryMagnitude = vector.PrimaryComponent.Magnitude;
-            int secondaryMagnitude = vector.SecondaryComponent.Magnitude;
-
-            if (primaryMagnitude < secondaryMagnitude)
-            {
-                throw new ArithmeticException("Secondary vector component should not be greater than the primary.");
-            }
-
-            if (IsSeeingThroughHexEdge(primaryMagnitude, secondaryMagnitude))
-            {
-                return (AvidDirection)(((byte)vector.PrimaryComponent.Direction) * 2 - 1);
-            }
-
-            if ((vector.PrimaryComponent.Direction == HexAxis.A && vector.SecondaryComponent.Direction == HexAxis.F) ||
-                (vector.PrimaryComponent.Direction == HexAxis.F && vector.SecondaryComponent.Direction == HexAxis.A))
-            {
-                return AvidDirection.FA;
-            }
-
-            return (AvidDirection)(((byte)vector.PrimaryComponent.Direction) + ((byte)vector.SecondaryComponent.Direction) - 1);
         }
 
         public double DirectionToAngle(AvidDirection direction)
@@ -199,27 +139,17 @@ namespace Kinetics.Core.Logic.Calculators
             return result;
         }
 
-        public double RingToLatitude(AvidRing ring)
-        {
-            return Math.PI * ((byte)ring - 1) / 6d;
-        }
-
         public AvidWindow GetOppositeWindow(AvidWindow window)
         {
             var oppositeDirection = window.Direction == AvidDirection.Undefined ? window.Direction : (AvidDirection)((((byte)window.Direction) + 5) % 12 + 1);
             return new AvidWindow(oppositeDirection, window.Ring, window.Ring == AvidRing.Ember || !window.AbovePlane);
         }
 
-        private bool IsSeeingThroughHexEdge(int distanceA, int distanceB)
-        {
-            return distanceA == 0 || distanceB == 0 ||
-                   (distanceA / distanceB >= 3) || (distanceB / distanceA >= 3);
-        }
-
         private Vector3 WindowToVector3(AvidWindow rotationAxis)
         {
             double angleA = DirectionToAngle(rotationAxis.Direction);
-            double angleB = rotationAxis.AbovePlane ? RingToLatitude(rotationAxis.Ring) : 2 * Math.PI - RingToLatitude(rotationAxis.Ring);
+            double angleB = rotationAxis.AbovePlane ? _rangeAltitudeTable.RingToLatitude(rotationAxis.Ring) : 
+                                                      2 * Math.PI - _rangeAltitudeTable.RingToLatitude(rotationAxis.Ring);
             return new Vector3(Math.Cos(angleA) * Math.Cos(angleB), Math.Sin(angleA) * Math.Cos(angleB), Math.Sin(angleB));
         }
 

@@ -1,5 +1,4 @@
-﻿using System;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Kinetics.Core;
 using Kinetics.Core.Data.Avid;
 using Kinetics.Core.Data.HexGrid;
@@ -18,25 +17,25 @@ namespace KineticToolTests
         [TestMethod]
         public void CheckCoordinateParsing1()
         {
-            CheckCoord(HexGridCoordinate.Parse("-2 1:0"), -2, 1, 0, 2);
+            TestChecksUtility.CheckCoord(HexGridCoordinate.Parse("-2 1:0"), -2, 1, 0, 2);
         }
 
         [TestMethod]
         public void CheckCoordinateParsing2()
         {
-            CheckCoord(HexGridCoordinate.Parse("3 1:0"), 3, 1, 0, -1);
+            TestChecksUtility.CheckCoord(HexGridCoordinate.Parse("3 1:0"), 3, 1, 0, -1);
         }
 
         [TestMethod]
         public void CheckCoordinateParsing3()
         {
-            CheckCoord(HexGridCoordinate.Parse("1 3:-3"), 1, 3, -3, 2);
+            TestChecksUtility.CheckCoord(HexGridCoordinate.Parse("1 3:-3"), 1, 3, -3, 2);
         }
 
         [TestMethod]
         public void CheckCoordinateParsing4()
         {
-            CheckCoord(HexGridCoordinate.Parse("0 4:3"), 0, 4, 3, 4);
+            TestChecksUtility.CheckCoord(HexGridCoordinate.Parse("0 4:3"), 0, 4, 3, 4);
         }
 
         [TestMethod]
@@ -184,18 +183,6 @@ namespace KineticToolTests
             TestChecksUtility.CheckAvidWindow(window, AvidDirection.Undefined, AvidRing.Magenta, false);
         }
 
-        private void CheckCoord(HexGridCoordinate testCoordinate, int cfCoord, int daCoord, int altitude, int daVectorMagnitude)
-        {
-            testCoordinate.CfCoordinate.Should().Be(cfCoord);
-            testCoordinate.DaCoordinate.Should().Be(daCoord);
-            testCoordinate.Altitude.Should().Be(altitude);
-
-            //Checking vector components
-            CheckVectorComponent(testCoordinate, cfCoord, HexAxis.C, HexAxis.F);
-            CheckVectorComponent(testCoordinate, daVectorMagnitude, HexAxis.D, HexAxis.A);
-            CheckVectorComponent(testCoordinate, altitude, HexAxis.Up, HexAxis.Down);
-        }
-
         private void CheckMovement(int initialCf, int initialDa, int initialAlt,
                                    HexAxis moveAxis, uint moveMagnitude,
                                    int finalCf, int finalDa, int finalAlt, int finalDaValue)
@@ -208,7 +195,7 @@ namespace KineticToolTests
             };
 
             _calculator.Move(coordinate, moveAxis, moveMagnitude);
-            CheckCoord(coordinate, finalCf, finalDa, finalAlt, finalDaValue);
+            TestChecksUtility.CheckCoord(coordinate, finalCf, finalDa, finalAlt, finalDaValue);
         }
 
         private void CheckDistance(HexGridCoordinate posA, HexGridCoordinate posB, int distance, AvidRing ring, AvidDirection direction, bool isAbovePlane)
@@ -218,17 +205,6 @@ namespace KineticToolTests
             result.Ring.Should().Be(ring);
             result.Direction.Should().Be(direction);
             result.AbovePlane.Should().Be(isAbovePlane);
-        }
-
-        private void CheckVectorComponent(HexGridCoordinate testCoordinate, int expectedMagnitude, HexAxis positiveAxis, HexAxis negativeAxis)
-        {
-            if (expectedMagnitude == 0)
-            {
-                return;
-            }
-
-            testCoordinate.Components.Should().ContainSingle(hvc => hvc.Magnitude == Math.Abs(expectedMagnitude) &&
-                                                                    hvc.Direction == (expectedMagnitude < 0 ? negativeAxis : positiveAxis));
         }
     }
 }

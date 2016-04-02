@@ -1,5 +1,4 @@
 ﻿using Kinetics.Core.Data.Avid;
-using Kinetics.Core.Data.HexVectors;
 
 namespace Kinetics.Core.Interfaces.Calculators
 {
@@ -8,13 +7,6 @@ namespace Kinetics.Core.Interfaces.Calculators
     /// </summary>
     public interface IAvidCalculator
     {
-        /// <summary>
-        /// Allows to determine through which window one object is seeing the other. It doesn't matter whether the vector is hex coordinates or a velocity difference.
-        /// </summary>
-        /// <param name="vector">Hex vector defining two objects' relative positions.</param>
-        /// <returns>Avid window through which an object would see the other object if the specified defines their relative position.</returns>
-        AvidVector ProjectVectorToAvid(HexVector vector);
-
         /// <summary>
         /// Converts avid direction into angle in radians, where direction B/C is 0 and the value increases counter clockwise.
         /// </summary>

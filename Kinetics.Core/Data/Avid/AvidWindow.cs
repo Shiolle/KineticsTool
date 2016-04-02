@@ -22,6 +22,11 @@ namespace Kinetics.Core.Data.Avid
         public AvidDirection Direction { get; set; }
         public AvidRing Ring { get; set; }
 
+        public bool IsCorner
+        {
+            get { return Direction != AvidDirection.Undefined && (byte)Direction % 2 == 0; }
+        }
+
         #region Equality logic
 
         public bool Equals(AvidWindow other)

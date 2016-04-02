@@ -1,6 +1,5 @@
 ﻿using Kinetics.Core.Infrastructure;
 using Kinetics.Core.Interfaces.Infrastructure;
-using Microsoft.Practices.Unity;
 
 namespace Kinetics.Core
 {

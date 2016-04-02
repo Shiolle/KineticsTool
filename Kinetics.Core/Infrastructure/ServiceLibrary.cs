@@ -11,6 +11,7 @@ namespace Kinetics.Core.Infrastructure
     internal class ServiceLibrary : IServiceLibrary
     {
         private readonly IAvidCalculator _avidCalculator;
+        private readonly IAvidProjectionCalculator _avidProjectionCalculator;
         private readonly IHexGridCalculator _hexGridCalculator;
         private readonly IHexVectorUtility _hexVectorUtility;
         private readonly IFiringSolutionCalculator _firingSolutionCalculator;
@@ -22,6 +23,7 @@ namespace Kinetics.Core.Infrastructure
         private readonly IProjectileDamageTable _projectileDamageTable;
 
         public ServiceLibrary(IAvidCalculator avidCalculator,
+                           IAvidProjectionCalculator avidProjectionCalculator,
                            IHexGridCalculator hexGridCalculator,
                            IHexVectorUtility hexVectorUtility,
                            IFiringSolutionCalculator firingSolutionCalculator,
@@ -32,6 +34,7 @@ namespace Kinetics.Core.Infrastructure
                            IProjectileDamageTable projectileDamageTable)
         {
             _avidCalculator = avidCalculator;
+            _avidProjectionCalculator = avidProjectionCalculator;
             _hexGridCalculator = hexGridCalculator;
             _hexVectorUtility = hexVectorUtility;
             _firingSolutionCalculator = firingSolutionCalculator;
@@ -48,6 +51,11 @@ namespace Kinetics.Core.Infrastructure
         public IAvidCalculator AvidCalculator
         {
             get { return _avidCalculator; }
+        }
+
+        public IAvidProjectionCalculator AvidProjectionCalculator
+        {
+            get { return _avidProjectionCalculator; }
         }
 
         public IFiringSolutionCalculator FiringSolutionCalculator

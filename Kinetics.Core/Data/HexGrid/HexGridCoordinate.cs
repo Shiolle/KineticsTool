@@ -77,6 +77,16 @@ namespace Kinetics.Core.Data.HexGrid
             };
         }
 
+        public HexGridCoordinate Clone()
+        {
+            return new HexGridCoordinate
+            {
+                Altitude = Altitude,
+                CfCoordinate = CfCoordinate,
+                DaCoordinate = DaCoordinate
+            };
+        }
+
         protected override void OnComponentsChanged()
         {
             base.OnComponentsChanged();
