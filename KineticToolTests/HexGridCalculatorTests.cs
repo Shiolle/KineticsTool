@@ -104,6 +104,20 @@ namespace KineticToolTests
         }
 
         [TestMethod]
+        public void CheckDistance6()
+        {
+            CheckDistance(HexGridCoordinate.Parse("7 8:0"), HexGridCoordinate.Parse("10 14:0"),
+                          8, AvidRing.Ember, AvidDirection.CD, true);
+        }
+
+        [TestMethod]
+        public void CheckDistance7()
+        {
+            CheckDistance(HexGridCoordinate.Parse("7 8:0"), HexGridCoordinate.Parse("4 14:0"),
+                          8, AvidRing.Ember, AvidDirection.DE, true);
+        }
+
+        [TestMethod]
         public void CheckBacktracking1()
         {
             var observerVelocity = new HexVector

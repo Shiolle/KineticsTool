@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="FireControl.Views.Shellstar.CounterfireSetup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:counterfireVm="clr-namespace:FireControl.ViewModels.Counterfire"
+             mc:Ignorable="d" Height="502" Width="612">
+    <Grid>
+        <ItemsControl Margin="2,4,2,365">
+            
+        </ItemsControl>
+        <ListView HorizontalAlignment="Left" Height="362" Margin="1,139,0,0" VerticalAlignment="Top" Width="179">
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="counterfireVm:CounterfireUnitViewModel">
+                    <Border Height="55" Margin="0, 1, 0, 1">
+                        <Grid>
+
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+</UserControl>

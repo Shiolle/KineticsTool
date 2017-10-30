@@ -18,10 +18,10 @@ namespace FireControl.Controls
         }
 
         public static readonly DependencyProperty ElementRadiusProperty =
-            DependencyProperty.Register("ElementDiameter", typeof(double), typeof(AvidElementBoard), new PropertyMetadata(35d));
+            DependencyProperty.Register("ElementRadius", typeof(double), typeof(AvidElementBoard), new PropertyMetadata(35d));
 
         public static readonly DependencyProperty RingRadiusProperty =
-            DependencyProperty.Register("RingWidth", typeof(double), typeof(AvidElementBoard), new PropertyMetadata(37d));
+            DependencyProperty.Register("RingRadius", typeof(double), typeof(AvidElementBoard), new PropertyMetadata(137d));
 
         public double ElementRadius
         {

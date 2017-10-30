@@ -167,6 +167,11 @@
     <Compile Include="ViewModels\Avid\TargetingAvidViewModel.cs" />
     <Compile Include="ViewModels\Avid\VectorComponentViewModel.cs" />
     <Compile Include="ViewModels\Avid\VectorsControlViewModel.cs" />
+    <Compile Include="ViewModels\Counterfire\CounterfireImpulseViewModel.cs" />
+    <Compile Include="ViewModels\Counterfire\CounterfireInfoViewModel.cs" />
+    <Compile Include="ViewModels\Counterfire\CounterfireSetupViewModel.cs" />
+    <Compile Include="ViewModels\Counterfire\CounterfireUnitViewModel.cs" />
+    <Compile Include="ViewModels\DataContexts\CounterfireDataContext.cs" />
     <Compile Include="ViewModels\DataContexts\LaunchBoardDataContext.cs" />
     <Compile Include="ViewModels\DataContexts\ShellstarDetailsDataContext.cs" />
     <Compile Include="ViewModels\IDialogWindow.cs" />
@@ -209,6 +214,12 @@
     </Compile>
     <Compile Include="Views\Misc\LogoPanel.xaml.cs">
       <DependentUpon>LogoPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Counterfire\CounterfireInfoControl.xaml.cs">
+      <DependentUpon>CounterfireInfoControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Counterfire\CounterfireSetupControl.xaml.cs">
+      <DependentUpon>CounterfireSetupControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Shellstar\ShellstarDetailsControl.xaml.cs">
       <DependentUpon>ShellstarDetailsControl.xaml</DependentUpon>
@@ -324,6 +335,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Misc\LogoPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Counterfire\CounterfireInfoControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Counterfire\CounterfireSetupControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -41,11 +41,10 @@
                         <Setter.Value>
                             <Binding>
                                 <Binding.Converter>
-                                    <avid:PositionToCanvasCoordinate Axis="AxisX" ScalingFactor="1.8" ElementDiameter="33" RingWidth="36.5" CanvasSize="262"/>
-                                                                     <!--RingRadius="{Binding Path=RingRadius, RelativeSource={RelativeSource FindAncestor, AncestorType=controls:AvidElementBoard}}"
-                                                                     ElementRadius="{Binding Path=ElementRadius, RelativeSource={RelativeSource FindAncestor, AncestorType=controls:AvidElementBoard}}"
-                                                                     CanvasSize="{Binding Path=Width, RelativeSource={RelativeSource TemplatedParent}}"/>-->
-                                    <!--RingRadius="{Binding Path=RingRadius, RelativeSource={RelativeSource TemplatedParent}}"-->
+                                    <avid:PositionToCanvasCoordinate Axis="AxisX" ScalingFactor="1.8" ElementRadius="16.5" RingWidth="36.5" CanvasSize="262"/>
+                                    <!--RingWidth="{Binding Path=RingRadius, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type controls:AvidElementBoard}}}"
+                                                                     ElementRadius="{Binding Path=ElementRadius, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type controls:AvidElementBoard}}}"
+                                                                     CanvasSize="{Binding Path=Width, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type controls:AvidElementBoard}}}"/>-->
                                 </Binding.Converter>
                             </Binding>
                         </Setter.Value>
@@ -54,7 +53,7 @@
                         <Setter.Value>
                             <Binding>
                                 <Binding.Converter>
-                                    <avid:PositionToCanvasCoordinate Axis="AxisY" ScalingFactor="1.6" ElementDiameter="33" RingWidth="36.5" CanvasSize="262"/>
+                                    <avid:PositionToCanvasCoordinate Axis="AxisY" ScalingFactor="1.6" ElementRadius="16.5" RingWidth="36.5" CanvasSize="262"/>
                                                                      <!--RingRadius="{Binding Path=RingRadius, RelativeSource={RelativeSource TemplatedParent}}"
                                                                      ElementRadius="{Binding Path=ElementRadius, RelativeSource={RelativeSource TemplatedParent}}"
                                                                      CanvasSize="{Binding Path=Width, RelativeSource={RelativeSource TemplatedParent}}"/>-->
@@ -71,6 +70,7 @@
                     <Border Width="35" Height="35" BorderBrush="Black" CornerRadius="20"
                                     Visibility="{Binding Visible, Converter={StaticResource MarkVisibilityConverter}}"
                                     BorderThickness="{Binding Window.AbovePlane, Converter={StaticResource ShapeThicknessConverter}}">
+                                    <!--Canvas.Left="54" Canvas.Top="42"-->
                         <Border.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform ScaleX="{Binding SharingPosition, Converter={StaticResource ScaleConverter}}"

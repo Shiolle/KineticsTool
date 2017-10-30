@@ -23,10 +23,12 @@ namespace FireControl.ValueConverters.Avid
             DependencyProperty.Register("CanvasSize", typeof(double), typeof(PositionToCanvasCoordinate));
 
         public static readonly DependencyProperty RingWidthProperty =
-            DependencyProperty.Register("RingWidth", typeof(double), typeof(PositionToCanvasCoordinate));
+            DependencyProperty.Register("RingWidth", typeof(double), typeof(PositionToCanvasCoordinate), new FrameworkPropertyMetadata(delegate (DependencyObject o, DependencyPropertyChangedEventArgs args)
+            {
+            }));
 
-        public static readonly DependencyProperty ElementDiameterProperty =
-            DependencyProperty.Register("ElementDiameter", typeof(double), typeof(PositionToCanvasCoordinate));
+        public static readonly DependencyProperty ElementRadiusProperty =
+            DependencyProperty.Register("ElementRadius", typeof(double), typeof(PositionToCanvasCoordinate));
 
         public static readonly DependencyProperty ScalingFactorProperty =
             DependencyProperty.Register("ScalingFactor", typeof(double), typeof(PositionToCanvasCoordinate));
@@ -45,10 +47,10 @@ namespace FireControl.ValueConverters.Avid
             set { SetValue(RingWidthProperty, value); }
         }
 
-        public double ElementDiameter
+        public double ElementRadius
         {
-            get { return (double)GetValue(ElementDiameterProperty); }
-            set { SetValue(ElementDiameterProperty, value); }
+            get { return (double)GetValue(ElementRadiusProperty); }
+            set { SetValue(ElementRadiusProperty, value); }
         }
 
         public double ScalingFactor
@@ -89,14 +91,14 @@ namespace FireControl.ValueConverters.Avid
 
         private double CalculateElementCorner(double elementCenter, bool scale)
         {
-            double halfLength = ElementDiameter / 2d;
+            double radius = ElementRadius;
 
             if (scale)
             {
-                halfLength = halfLength / ScalingFactor;
+                radius = radius / ScalingFactor;
             }
 
-            return elementCenter - halfLength;
+            return elementCenter - radius;
         }
 
         private double SharingPositionToCenterShift(int sharingPosition)
@@ -118,7 +120,7 @@ namespace FireControl.ValueConverters.Avid
                 shiftDirection = sharingPosition % 2 == 0 ? -1 : 1;
             }
 
-            return ElementDiameter * shiftDirection * 0.375d / 2d;
+            return ElementRadius * shiftDirection * 0.375d;
         }
 
         private int GetAvidRingProjectionNumber(AvidRing ring)
